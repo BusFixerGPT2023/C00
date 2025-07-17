@@ -48,7 +48,7 @@ void	show(int nb)
 					write(1,", ",2);
 				n1++;
 			}
-			if (n1 = '9')
+			if (n1 == '9')
 				n1 = '0';
 			n2++;
 		}
