@@ -12,36 +12,61 @@
 
 #include <unistd.h>
 
+void show(int nb);
+void showStatic (int nb);
+
 void	ft_print_comb2(void)
 {
-	int n3;
-	n3 = 90;
-	show(n3);
+	int num;
+
+	num = 0;
+	while (num <= 98)
+	{
+		show(num);
+		num++;
+	}
+	
 }
 
-void show(int nb)
+void	show(int nb)
 {
-	int n1;
-	int n2;
-
-	n1 = nb / 10;
-	n2 = nb % 10;
-	printf("%d %d",n1,n2);
-	while (n1<= '9')
+	char n1;
+	char n2;
+	
+	nb++;
+	n2 = nb / 10 + '0';
+	n1 = nb % 10 + '0';
+	
+	while (n2<= '9')
 		{
-			while (n2<='9')
+			while (n1<='9')
 			{
-				write(1,&n1,1);
+				showStatic (nb-1);
 				write(1,&n2,1);
-				write(1," ",1);
-				n2++;
+				write(1,&n1,1);
+				if (!(n1 == '9' && n2 == '9' && nb == 99))	
+					write(1,", ",2);
+				n1++;
 			}
-			if (n2 = '9')
-				n2 = '0';
-				
-			n1++;
+			if (n1 = '9')
+				n1 = '0';
+			n2++;
 		}
 }
+
+void showStatic (int nb)
+{
+	char n1;
+	char n2;
+
+	n2 = nb/10 + 48;
+	n1 = nb%10 + 48;
+
+	write(1,&n2,1);
+	write(1,&n1,1);
+	write(1," ",1);
+}
+
 
 int main()
 {
